@@ -1,18 +1,467 @@
-# This .gitignore is appropriate for repositories deployed to GitHub Pages and using
-# a Gemfile as specified at https://github.com/github/pages-gem#conventional
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDS Assignment-1 Solutions</title>
+    <style>
+        @page {
+            margin: 2cm;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+        
+        .diagram {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        
+        .code {
+            background: #282c34;
+            color: #abb2bf;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            line-height: 1.5;
+        }
+        
+        .keyword { color: #c678dd; }
+        .function { color: #61afef; }
+        .string { color: #98c379; }
+        .comment { color: #5c6370; font-style: italic; }
+        .number { color: #d19a66; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .note {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .result-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        ul, ol {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+            }
+            .code {
+                page-break-inside: avoid;
+            }
+            h2 {
+                page-break-after: avoid;
+            }
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .print-btn:hover {
+            background: #2980b9;
+        }
+        
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">🖨 Print/Save as PDF</button>
+    
+    <h1>Assignment-1 (DDS)<br>Complete Solutions with Diagrams</h1>
+    
+    <h2>Q1. Data Structure Classification and Array Program</h2>
+    
+    <h3>What is a Data Structure?</h3>
+    <p>A <span class="highlight">data structure</span> is a way of organizing, storing, and managing data in a computer so that it can be accessed and modified efficiently. It defines the relationship between data elements and the operations that can be performed on them.</p>
+    
+    <h3>Classification of Data Structures</h3>
+    <div class="diagram">                    DATA STRUCTURES
+                          |
+        _________________|_________________
+       |                                     |
+  PRIMITIVE                            NON-PRIMITIVE
+       |                                     |
+  ____|____                       ________|________
+ |     |     |                     |                   |
+int  float  char                LINEAR            NON-LINEAR
+              pointer             |                   |
+                         ________|_______      ____|_____
+                        |        |        |     |            |
+                      Array    Stack   Queue   Tree        Graph
+                               Linked List</div>
+    
+    <h3>Primitive Data Structures</h3>
+    <p>Built-in data types provided by programming languages:</p>
+    <ul>
+        <li><strong>int:</strong> Stores integers (e.g., 10, -5, 100)</li>
+        <li><strong>float:</strong> Stores decimal numbers (e.g., 3.14, -0.5)</li>
+        <li><strong>char:</strong> Stores single characters (e.g., 'A', 'z', '$')</li>
+        <li><strong>pointer:</strong> Stores memory addresses</li>
+    </ul>
+    
+    <h3>Non-Primitive Data Structures</h3>
+    <p>Derived from primitive data types:</p>
+    
+    <p><strong>Linear Data Structures:</strong> Elements arranged sequentially</p>
+    <ul>
+        <li><strong>Array:</strong> Fixed-size, contiguous memory (e.g., int arr[5] = {1,2,3,4,5})</li>
+        <li><strong>Stack:</strong> LIFO structure (e.g., browser back button)</li>
+        <li><strong>Queue:</strong> FIFO structure (e.g., printer queue)</li>
+        <li><strong>Linked List:</strong> Dynamic, non-contiguous (e.g., music playlist)</li>
+    </ul>
+    
+    <p><strong>Non-Linear Data Structures:</strong> Hierarchical arrangement</p>
+    <ul>
+        <li><strong>Tree:</strong> Parent-child relationship (e.g., file system)</li>
+        <li><strong>Graph:</strong> Network of nodes (e.g., social networks)</li>
+    </ul>
+    
+    <h3>Program: Array with Dynamic Memory Allocation</h3>
+    <div class="code"><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdlib.h&gt;</span>
 
-# Basic Jekyll gitignores (synchronize to Jekyll.gitignore)
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> *arr;
+    <span class="keyword">int</span> n, i;
+    
+    <span class="function">printf</span>(<span class="string">"Enter the number of elements: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &n);
+    
+    <span class="comment">// Dynamic memory allocation</span>
+    arr = (<span class="keyword">int</span>*)<span class="function">malloc</span>(n * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));
+    
+    <span class="comment">// Check if memory allocation was successful</span>
+    <span class="keyword">if</span> (arr == <span class="number">NULL</span>) {
+        <span class="function">printf</span>(<span class="string">"Memory allocation failed!\n"</span>);
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }
+    
+    <span class="comment">// Input elements</span>
+    <span class="function">printf</span>(<span class="string">"Enter %d elements:\n"</span>, n);
+    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="function">scanf</span>(<span class="string">"%d"</span>, &arr[i]);
+    }
+    
+    <span class="comment">// Display elements</span>
+    <span class="function">printf</span>(<span class="string">"\nArray elements are:\n"</span>);
+    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, arr[i]);
+    }
+    <span class="function">printf</span>(<span class="string">"\n"</span>);
+    
+    <span class="comment">// Free allocated memory</span>
+    <span class="function">free</span>(arr);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</div>
+    
+    <h2>Q2. Time and Space Complexity</h2>
+    
+    <h3>Time Complexity</h3>
+    <p>Time complexity measures the amount of time an algorithm takes to complete as a function of input size. It describes how the runtime grows with input size.</p>
+    
+    <div class="note">
+        <strong>Common Time Complexities:</strong><br>
+        • <strong>O(1)</strong> - Constant: Accessing array element<br>
+        • <strong>O(log n)</strong> - Logarithmic: Binary search<br>
+        • <strong>O(n)</strong> - Linear: Linear search<br>
+        • <strong>O(n log n)</strong> - Linearithmic: Merge sort<br>
+        • <strong>O(n²)</strong> - Quadratic: Bubble sort<br>
+        • <strong>O(2ⁿ)</strong> - Exponential: Recursive fibonacci
+    </div>
+    
+    <h3>Space Complexity</h3>
+    <p>Space complexity measures the total memory space required by an algorithm, including auxiliary space and space used by input.</p>
+    
+    <p><strong>Components:</strong></p>
+    <ul>
+        <li>Fixed part: Space for constants, variables</li>
+        <li>Variable part: Space that depends on input size</li>
+    </ul>
+    
+    <h3>Importance for Performance Analysis</h3>
+    <ol>
+        <li><strong>Efficiency Comparison:</strong> Compare different algorithms</li>
+        <li><strong>Scalability:</strong> Predict behavior with large inputs</li>
+        <li><strong>Resource Management:</strong> Optimize memory usage</li>
+        <li><strong>Algorithm Selection:</strong> Choose best algorithm for constraints</li>
+        <li><strong>Bottleneck Identification:</strong> Find performance issues</li>
+    </ol>
+    
+    <h3>Program: Count Operations in Array Search</h3>
+    <div class="code"><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
 
-# Additional Ruby/bundler ignore for when you run: bundle install
-/vendor
+<span class="keyword">int</span> <span class="function">linearSearch</span>(<span class="keyword">int</span> arr[], <span class="keyword">int</span> n, <span class="keyword">int</span> key, <span class="keyword">int</span> *operations) {
+    *operations = <span class="number">0</span>;
+    
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        (*operations)++; <span class="comment">// Increment for each comparison</span>
+        <span class="keyword">if</span> (arr[i] == key) {
+            <span class="keyword">return</span> i; <span class="comment">// Element found at index i</span>
+        }
+    }
+    <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// Element not found</span>
+}
 
-# Specific ignore for GitHub Pages
-# GitHub Pages will always use its own deployed version of pages-gem 
-# This means GitHub Pages will NOT use your Gemfile.lock and therefore it is
-# counterproductive to check this file into the repository.
-# Details at https://github.com/github/pages-gem/issues/768
-Gemfile.lock
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> arr[] = {<span class="number">10</span>, <span class="number">25</span>, <span class="number">30</span>, <span class="number">45</span>, <span class="number">50</span>, <span class="number">65</span>, <span class="number">70</span>};
+    <span class="keyword">int</span> n = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);
+    <span class="keyword">int</span> key, operations;
+    
+    <span class="function">printf</span>(<span class="string">"Array elements: "</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, arr[i]);
+    }
+    
+    <span class="function">printf</span>(<span class="string">"\nEnter element to search: "</span>);
+    <span class="function">scanf</span>(<span class="string">"%d"</span>, &key);
+    
+    <span class="keyword">int</span> result = <span class="function">linearSearch</span>(arr, n, key, &operations);
+    
+    <span class="keyword">if</span> (result != <span class="number">-1</span>) {
+        <span class="function">printf</span>(<span class="string">"Element %d found at index %d\n"</span>, key, result);
+    } <span class="keyword">else</span> {
+        <span class="function">printf</span>(<span class="string">"Element %d not found in array\n"</span>, key);
+    }
+    
+    <span class="function">printf</span>(<span class="string">"Number of operations: %d\n"</span>, operations);
+    <span class="function">printf</span>(<span class="string">"Time Complexity: O(n)\n"</span>);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}</div>
+    
+    <h2>Q3. Stack Operations</h2>
+    
+    <h3>What is a Stack?</h3>
+    <p>A stack is a linear data structure that follows the <span class="highlight">LIFO (Last In First Out)</span> principle. The element inserted last is removed first.</p>
+    
+    <h3>Stack Operations Diagram</h3>
+    <div class="diagram">PUSH Operation:          POP Operation:           PEEK Operation:
+Add element to top       Remove top element       View top element
+
+    |   |                   |   |                    |   |
+    | 40| ← TOP             |   | ← TOP              | 30| ← PEEK
+    | 30|                   | 30|                    | 20|
+    | 20|                   | 20|                    | 10|
+    | 10|                   | 10|                    |_|
+    ||                   ||                    
+    
+   After PUSH(40)         After POP()             Returns 30</div>
+    
+    <h3>Stack Operations Explained</h3>
+    <ol>
+        <li><strong>PUSH:</strong> Add element to the top
+            <ul>
+                <li>Check if stack is full (overflow)</li>
+                <li>Increment top pointer</li>
+                <li>Insert element at top</li>
+            </ul>
+        </li>
+        <li><strong>POP:</strong> Remove element from top
+            <ul>
+                <li>Check if stack is empty (underflow)</li>
+                <li>Remove element at top</li>
+                <li>Decrement top pointer</li>
+            </ul>
+        </li>
+        <li><strong>PEEK/TOP:</strong> View top element without removing
+            <ul>
+                <li>Check if stack is empty</li>
+                <li>Return element at top</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h3>Program: Stack Implementation Using Array</h3>
+    <div class="code"><span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="string">&lt;stdlib.h&gt;</span>
+
+<span class="keyword">#define</span> MAX <span class="number">100</span>
+
+<span class="keyword">typedef struct</span> {
+    <span class="keyword">int</span> arr[MAX];
+    <span class="keyword">int</span> top;
+} Stack;
+
+<span class="comment">// Initialize stack</span>
+<span class="keyword">void</span> <span class="function">initStack</span>(Stack *s) {
+    s->top = <span class="number">-1</span>;
+}
+
+<span class="comment">// Check if stack is empty</span>
+<span class="keyword">int</span> <span class="function">isEmpty</span>(Stack *s) {
+    <span class="keyword">return</span> s->top == <span class="number">-1</span>;
+}
+
+<span class="comment">// Check if stack is full</span>
+<span class="keyword">int</span> <span class="function">isFull</span>(Stack *s) {
+    <span class="keyword">return</span> s->top == MAX - <span class="number">1</span>;
+}
+
+<span class="comment">// Push operation</span>
+<span class="keyword">void</span> <span class="function">push</span>(Stack *s, <span class="keyword">int</span> value) {
+    <span class="keyword">if</span> (<span class="function">isFull</span>(s)) {
+        <span class="function">printf</span>(<span class="string">"Stack Overflow! Cannot push %d\n"</span>, value);
+        <span class="keyword">return</span>;
+    }
+    s->arr[++(s->top)] = value;
+    <span class="function">printf</span>(<span class="string">"Pushed %d to stack\n"</span>, value);
+}
+
+<span class="comment">// Pop operation</span>
+<span class="keyword">int</span> <span class="function">pop</span>(Stack *s) {
+    <span class="keyword">if</span> (<span class="function">isEmpty</span>(s)) {
+        <span class="function">printf</span>(<span class="string">"Stack Underflow! Cannot pop\n"</span>);
+        <span class="keyword">return</span> <span class="number">-1</span>;
+    }
+    <span class="keyword">return</span> s->arr[(s->top)--];
+}
+
+<span class="comment">// Peek operation</span>
+<span class="keyword">int</span> <span class="function">peek</span>(Stack *s) {
+    <span class="keyword">if</span> (<span class="function">isEmpty</span>(s)) {
+        <span class="function">printf</span>(<span class="string">"Stack is empty!\n"</span>);
+        <span class="keyword">return</span> <span class="number">-1</span>;
+    }
+    <span class="keyword">return</span> s->arr[s->top];
+}
+
+<span class="comment">// Display stack</span>
+<span class="keyword">void</span> <span class="function">display</span>(Stack *s) {
+    <span class="keyword">if</span> (<span class="function">isEmpty</span>(s)) {
+        <span class="function">printf</span>(<span class="string">"Stack is empty!\n"</span>);
+        <span class="keyword">return</span>;
+    }
+    <span class="function">printf</span>(<span class="string">"Stack (top to bottom): "</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = s->top; i >= <span class="number">0</span>; i--) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, s->arr[i]);
+    }
+    <span class="function">printf</span>(<span class="string">"\n"</span>);
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    Stack s;
+    <span class="function">initStack</span>(&s);
+    <span class="keyword">int</span> choice, value;
+    
+    <span class="keyword">while</span> (<span class="number">1</span>) {
+        <span class="function">printf</span>(<span class="string">"\n--- Stack Menu ---\n"</span>);
+        <span class="function">printf</span>(<span class="string">"1. Push\n2. Pop\n3. Peek\n4. Display\n5. Exit\n"</span>);
+        <span class="function">printf</span>(<span class="string">"Choice: "</span>);
+        <span class="function">scanf</span>(<span class="string">"%d"</span>, &choice);
+        
+        <span class="keyword">switch</span> (choice) {
+            <span class="keyword">case</span> <span class="number">1</span>:
+                <span class="function">printf</span>(<span class="string">"Enter value: "</span>);
+                <span class="function">scanf</span>(<span class="string">"%d"</span>, &value);
+                <span class="function">push</span>(&s, value);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">2</span>:
+                value = <span class="function">pop</span>(&s);
+                <span class="keyword">if</span> (value != <span class="number">-1</span>)
+                    <span class="function">printf</span>(<span class="string">"Popped: %d\n"</span>, value);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">3</span>:
+                value = <span class="function">peek</span>(&s);
+                <span class="keyword">if</span> (value != <span class="number">-1</span>)
+                    <span class="function">printf</span>(<span class="string">"Top: %d\n"</span>, value);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">4
